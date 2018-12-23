@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="treenode" default="test">
+
+  <path id="lib">
+    <pathelement location="lib/hamcrest-core-1.1.jar"/>
+    <pathelement location="lib/junit-4.9.jar"/>
+  </path>
+
+  <target name="compile">
+    <mkdir dir="output"/>
+    <javac srcdir="src" destdir="output" classpathref="lib"/>
+  </target>
+  
+  
+  <target name="clean">
+    <delete dir="output"/>
+  </target>
+
+  <target name="test" depends="clean, compile">
+      <junit printsummary="true">
+          <classpath>
+              <path refid="lib"/>
+              <pathelement location="output"/>
+          </classpath>
+          <test name="Restaurant.test.RestManagerTest" />
+      </junit>
+  </target>
+
+</project>
